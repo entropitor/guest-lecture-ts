@@ -1,76 +1,3 @@
-namespace UtilityTypes {
-  // typeof
-  type ManualConfig = {
-    readonly env: "production"
-  }
-
-  const config = { env: "production" } as const
-  // Config === ManualConfig
-  type Config = typeof config
-
-  // keyof
-  type ManualConfigKeys = "env"
-  // ConfigKeys === ManualConfigKeys
-  type ConfigKeys = keyof Config
-
-  // Pick & Omit
-  type User = {
-    createdAt: Date
-    email: string
-    hasActiveSubscription: boolean
-    id: number
-    name: string
-  }
-  type GdprSafeUser = Pick<User, "id" | "hasActiveSubscription" | "createdAt">
-  type AnonimizedUser = Omit<User, "name" | "email">
-  // GdprSafeUser === AnonimizedUser;
-
-  // "valueof"
-  type Name = User["name"]
-  type Values = User[keyof User]
-
-  // "valueof" (array)
-  type Position = [name: string, x: number, y: number]
-  type PositionName = Position[0]
-  type PositionX = Position[1]
-  type ValuesOfArray = Position[number]
-
-  // Parameters & ReturnType
-  type UserState = {
-    email: string
-    name: string
-  }
-
-  type UserAction =
-    | {
-        name: string
-        type: "SET_NAME"
-      }
-    | { email: string; type: "SET_EMAIL" }
-
-  export const userReducer = (state: UserState, action: UserAction) => {
-    switch (action.type) {
-      case "SET_NAME":
-        return { ...state, name: action.name }
-      case "SET_EMAIL":
-        return { ...state, email: action.email }
-      default:
-        return DiscriminatedUnion.unreachable(action)
-    }
-  }
-
-  type ReducerParameters = Parameters<typeof userReducer>
-
-  // Action === UserAction
-  type Action = ReducerParameters[1]
-
-  // State === UserState
-  type State = ReducerParameters[0]
-
-  // StillState === UserState
-  type StillState = ReturnType<typeof userReducer>
-}
-
 namespace MappedTypes {
   type Environment = "production" | "staging" | "development"
   type UrlForEnvironment = {
@@ -213,3 +140,7 @@ namespace UrlParts {
 type Weight = InKiloGrams | InPounds
 type Weight2 = NumberInUnit<"kilogram" | "pound">
 type Weight3 = NumberInUnit<"kilogram"> | NumberInUnit<"pound">
+
+// Things to potentially cover later
+// Pick & Omit?
+// Parameters & ReturnType
