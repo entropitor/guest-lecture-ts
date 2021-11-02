@@ -1,21 +1,3 @@
-namespace DiscriminatedUnion_PositionalArguments {
-  type UserUnion2 = ["LoggedIn", BasicTypes.UserRecord] | ["Anonymous"]
-
-  const handleUserUnion2 = (userUnion: UserUnion2) => {
-    switch (userUnion[0]) {
-      case "Anonymous":
-        return 0
-      case "LoggedIn":
-        // We can correctly access userState[1] here
-        return userUnion[1].name.length
-      default:
-        // If we comment out one of the branches above
-        // we get a type error
-        return DiscriminatedUnion.unreachable(userUnion)
-    }
-  }
-}
-
 namespace Generics {
   // ManualArray === builtin Array
   type ManualArray<T> = T[]
