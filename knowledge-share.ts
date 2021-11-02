@@ -1,20 +1,3 @@
-namespace BasicTypes {
-  type Any = any
-  const parse = (_arg: any) => {
-    // parse value
-  }
-
-  type Unknown = unknown
-  const betterParse = (_arg: unknown) => {
-    // parse value
-  }
-
-  type Never = never
-  const explode = (_arg: any): never => {
-    throw new Error("Boom")
-  }
-}
-
 namespace StringLiteral {
   let looseEnv = "production"
   const env = "production"
