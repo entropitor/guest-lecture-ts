@@ -1,33 +1,3 @@
-namespace DiscriminatedUnion {
-  type Env = "production" | "staging"
-
-  export type UserUnion =
-    | {
-        type: "LoggedIn"
-        user: BasicTypes.UserRecord
-      }
-    | {
-        type: "Anonymous"
-      }
-
-  export const unreachable = (_arg: never) => {
-    throw new Error("Should not be reachable")
-  }
-  const handleUserUnion = (userUnion: UserUnion) => {
-    switch (userUnion.type) {
-      case "Anonymous":
-        return 0
-      case "LoggedIn":
-        // We can correctly access userUnion.user here
-        return userUnion.user.name.length
-      default:
-        // If we comment out one of the branches above
-        // we get a type error
-        return unreachable(userUnion)
-    }
-  }
-}
-
 namespace DiscriminatedUnion_PositionalArguments {
   type UserUnion2 = ["LoggedIn", BasicTypes.UserRecord] | ["Anonymous"]
 
