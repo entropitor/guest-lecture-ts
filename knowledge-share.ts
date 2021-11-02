@@ -1,24 +1,3 @@
-namespace Generics {
-  // ManualArray === builtin Array
-  type ManualArray<T> = T[]
-
-  const a = [2, 4, 6]
-  a.map((num) => num ** 2)
-
-  const b = [2, "4", 6]
-  // typeof b = string | number
-  // @ts-expect-error The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
-  b.map((num) => num ** 2)
-
-  // Reducer
-  type Reducer<State, Action> = (state: State, action: Action) => State
-  // with constraints:
-  type ReducerSafer<State, Action extends { type: string }> = (
-    state: State,
-    action: Action
-  ) => State
-}
-
 namespace UtilityTypes {
   // typeof
   type ManualConfig = {
@@ -229,3 +208,8 @@ namespace UrlParts {
     type MyParamsObject = ParamsObject<MyUrl>
   }
 }
+
+// Make sure to cover the distribution of generic function application
+type Weight = InKiloGrams | InPounds
+type Weight2 = NumberInUnit<"kilogram" | "pound">
+type Weight3 = NumberInUnit<"kilogram"> | NumberInUnit<"pound">
