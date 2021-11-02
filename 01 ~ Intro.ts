@@ -30,6 +30,14 @@ let f: Company = {
   hiring: true,
 }
 f
+
+// ^?
+interface Company2 {
+  companyName: string
+  hiring: boolean
+}
+let f2: Company2 = f
+f2
 // ^?
 
 let meaningOfLife = () => 42
