@@ -1,19 +1,3 @@
-namespace StringLiteral {
-  let looseEnv = "production"
-  const env = "production"
-
-  const looseConfig = { env: "production" }
-  if (looseConfig.env === "staging") {
-    // do something
-  }
-
-  const config = { env: "production" } as const
-  // @ts-expect-error This condition will always return 'false' since the types '"production"' and '"staging"' have no overlap.
-  if (config.env === "staging") {
-    // do something
-  }
-}
-
 namespace DiscriminatedUnion {
   type Env = "production" | "staging"
 

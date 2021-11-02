@@ -10,7 +10,7 @@ let c: boolean = false
 c
 // ^?
 
-const d = ["Jens", "Jeroen"]
+let d = ["Jens", "Jeroen"]
 d
 // ^?
 
@@ -32,7 +32,7 @@ let f: Company = {
 f
 // ^?
 
-const meaningOfLife = () => 42
+let meaningOfLife = () => 42
 meaningOfLife
 // ^?
 

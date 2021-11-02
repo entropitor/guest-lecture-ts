@@ -1,4 +1,4 @@
-const parse = (arg: any) => {
+let parse = (arg: any) => {
   return parseInt(arg, 10)
 }
 parse
@@ -10,7 +10,7 @@ parse(false) // throws error!
 
 // =============================================================
 
-const betterParse = (arg: unknown) => {
+let betterParse = (arg: unknown) => {
   // If we pass arg to parseInt we get a type error
   // parseInt(arg, 10)
 
@@ -30,6 +30,6 @@ betterParse(false)
 
 // =============================================================
 
-const explode = (): never => {
+let explode = (): never => {
   throw new Error("Boom")
 }
