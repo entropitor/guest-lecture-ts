@@ -1,13 +1,3 @@
-namespace Infer {
-  type PromiseOf<T> = T extends Promise<infer S> ? S : never
-  type PromiseOfSafe<T extends Promise<any>> = T extends Promise<infer S>
-    ? S
-    : never
-
-  type FooOf<A> = A extends { foo: infer S } ? S : never
-  type Foo = FooOf<{ foo: number }>
-}
-
 namespace TemplateLiterals {
   type Color = "red" | "green" | "blue"
   type BorderStyle = "solid" | "dashed"
