@@ -1,5 +1,5 @@
 // "If-else"
-type DayPlanning<Day> = Day extends "saturday" | "sunday"
+type DayPlanning<Day> = Day extends "Saturday" | "Sunday"
   ? {
       toEat: string
       relaxingActivity: string
@@ -9,6 +9,17 @@ type DayPlanning<Day> = Day extends "saturday" | "sunday"
       workItemToDo: string
     }
 
+type Day =
+  | "Monday"
+  | "Tuesday"
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday"
+  | "Sunday"
+type WeekPlanning = {
+  [TDay in Day]: DayPlanning<TDay>
+}
 /*
  *
  *

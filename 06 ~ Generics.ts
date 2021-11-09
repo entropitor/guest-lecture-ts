@@ -40,6 +40,7 @@ const oneKilogramTypo: InKiloGrams = {
  *
  *
  */
+// Possible to add bounds
 type NumberInWeightUnit<WeightUnit extends "kilogram" | "pound"> = {
   value: number
   unit: WeightUnit
