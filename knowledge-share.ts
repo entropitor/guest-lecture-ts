@@ -1,17 +1,3 @@
-namespace TemplateLiterals {
-  type Color = "red" | "green" | "blue"
-  type BorderStyle = "solid" | "dashed"
-  type Border = `1px ${BorderStyle} ${Color}`
-
-  type ColorFromBorder<MyBorder> =
-    MyBorder extends `1px ${infer BorderStyle} ${infer Color}` ? Color : never
-
-  type MainIngredients = {
-    [Day in keyof Menu]: Menu[Day] extends `${infer T} and ${string}`
-      ? T
-      : never
-  }
-}
 namespace ReturnType {
   // Let's implement "ReturnType"
   const foo = () => 42
