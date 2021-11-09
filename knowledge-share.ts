@@ -1,15 +1,3 @@
-namespace MappedTypes {
-  type Environment = "production" | "staging" | "development"
-  type UrlForEnvironment = {
-    [env in Environment]: string
-  }
-
-  const reducers = { user: UtilityTypes.userReducer }
-  type CombinedState = {
-    [reducer in keyof typeof reducers]: ReturnType<typeof reducers[reducer]>
-  }
-}
-
 namespace ConditionalTypes {
   type EnvDependantConfig<Env> = Env extends "production" | "staging"
     ? {
@@ -36,6 +24,12 @@ namespace ConditionalTypes {
       : User[key] extends boolean
       ? "true" | "false"
       : User[key]
+  }
+
+  type MainIngredients = {
+    [Day in keyof Menu]: Menu[Day] extends `${infer T} and ${string}`
+      ? T
+      : never
   }
 }
 
