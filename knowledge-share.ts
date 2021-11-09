@@ -1,38 +1,3 @@
-namespace ConditionalTypes {
-  type EnvDependantConfig<Env> = Env extends "production" | "staging"
-    ? {
-        mainUrl: string
-      }
-    : {
-        mainUrl: string
-        someLocalhostConfig: number
-      }
-
-  type GetUserId = <U extends DiscriminatedUnion.UserUnion>(
-    user: U
-  ) => U["type"] extends "LoggedIn" ? number : undefined
-
-  type User = BasicTypes.UserRecord
-
-  type UserSerialized = {
-    [key in keyof User]: User[key] extends Date ? string : User[key]
-  }
-
-  type UserSerializedAdvanced = {
-    [key in keyof User]: User[key] extends Date
-      ? string
-      : User[key] extends boolean
-      ? "true" | "false"
-      : User[key]
-  }
-
-  type MainIngredients = {
-    [Day in keyof Menu]: Menu[Day] extends `${infer T} and ${string}`
-      ? T
-      : never
-  }
-}
-
 namespace Infer {
   type PromiseOf<T> = T extends Promise<infer S> ? S : never
   type PromiseOfSafe<T extends Promise<any>> = T extends Promise<infer S>
@@ -50,6 +15,12 @@ namespace TemplateLiterals {
 
   type ColorFromBorder<MyBorder> =
     MyBorder extends `1px ${infer BorderStyle} ${infer Color}` ? Color : never
+
+  type MainIngredients = {
+    [Day in keyof Menu]: Menu[Day] extends `${infer T} and ${string}`
+      ? T
+      : never
+  }
 }
 namespace ReturnType {
   // Let's implement "ReturnType"
