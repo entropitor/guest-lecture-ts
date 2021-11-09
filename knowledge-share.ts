@@ -91,11 +91,6 @@ namespace UrlParts {
   }
 }
 
-// Make sure to cover the distribution of generic function application
-type Weight = InKiloGrams | InPounds
-type Weight2 = NumberInUnit<"kilogram" | "pound">
-type Weight3 = NumberInUnit<"kilogram"> | NumberInUnit<"pound">
-
 // Things to potentially cover later
 // Pick & Omit?
 // Parameters & ReturnType

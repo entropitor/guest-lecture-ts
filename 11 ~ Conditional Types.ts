@@ -66,3 +66,41 @@ type StringifiedCompany = {
     ? string
     : Company[Key]
 }
+
+/*
+ *
+ *
+ *
+ */
+// What if we "call" a generic (i.e. "function") with a union?
+type NumberOrString<T> = T extends "foo"
+  ? number
+  : T extends "bar"
+  ? string
+  : never
+
+type A = NumberOrString<"foo">
+type B = NumberOrString<"bar">
+type C = NumberOrString<"qux">
+type D = NumberOrString<"foo" | "bar">
+type E = NumberOrString<"bar" | "foo">
+type F = NumberOrString<"foo" | "qux">
+type G = NumberOrString<"bar" | "qux">
+type H = NumberOrString<"foo" | "bar" | "qux">
+
+/*
+ *
+ *
+ *
+ */
+type NumberInUnit<Unit> = {
+  value: number
+  unit: Unit
+}
+
+type InKiloGrams = NumberInUnit<"kilogram">
+type InPounds = NumberInUnit<"pound">
+
+type Weight = NumberInUnit<"kilogram" | "pound">
+type Weight2 = NumberInUnit<"kilogram"> | NumberInUnit<"pound">
+type Weight3 = InKiloGrams | InPounds
