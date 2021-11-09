@@ -37,7 +37,7 @@ type B = NameFrom<"boring Jens">
  */
 
 const menu = {
-  Monday: ["Steak and lettuce", "Codd and lettuce"],
+  Monday: ["Steak and lettuce", "Codd and tomatoes"],
   Tuesday: ["Chicken and carrots", "Peas and carrots"],
   Wednesday: ["Fish and chips", "Turkey and stuffing"],
   Thursday: ["Sushi and rice", "Wok and noodles"],
