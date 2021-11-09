@@ -1,17 +1,3 @@
-namespace ReturnType {
-  // Let's implement "ReturnType"
-  const foo = () => 42
-  type CustomReturnType<T> = any
-  type FooReturn = CustomReturnType<typeof foo>
-  namespace solution {
-    type CustomReturnType<T extends (...args: any[]) => any> = T extends (
-      ...args: any[]
-    ) => infer R
-      ? R
-      : never
-    type FooReturn = CustomReturnType<typeof foo>
-  }
-}
 namespace DiscriminatedUnionConstructors {
   // Constructor functions for Discriminated Unions can give positional arugments when constructing, avoiding boilerplate
   // However, this would require boilerplate on the type level. Not after this Knowledge share!
