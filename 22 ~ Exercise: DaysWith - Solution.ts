@@ -16,7 +16,7 @@ type Menu = {
  *
  */
 
-type ValueOf<T extends readonly any[]> = T[number]
+type ValueOf<T extends any[]> = T[number]
 
 type PossibleChoices = Menu[keyof Menu]
 type AllMeals = ValueOf<PossibleChoices>
@@ -53,10 +53,6 @@ type MealsWithHummus = MealsWithIngredient<"hummus">
 type ServesMealOnDay<Meal, Day extends keyof Menu> = {
   [MealForDay in ValueOf<Menu[Day]>]: Meal extends MealForDay ? Day : never
 }[ValueOf<Menu[Day]>]
-
-type X = ServesMealOnDay<"Fries and ketchup", "Sunday">
-type Y = ServesMealOnDay<"Steak and lettuce", "Monday">
-type Z = ServesMealOnDay<"Steak and lettuce", "Tuesday">
 
 type DaysWith<Ingredient extends string> = {
   [Day in keyof Menu]: ServesMealOnDay<MealsWithIngredient<Ingredient>, Day>
