@@ -1,5 +1,4 @@
-// Task: Given an ingredient, say on which day you can eat it
-// To help: start with figuring out which meals use this ingredient
+// Task: convert the menu into a more structured type (an object with {main: string, side: string})
 const menu = {
   Monday: ["Steak and lettuce", "Codd and tomatoes"],
   Tuesday: ["Chicken and carrots", "Peas and carrots"],
