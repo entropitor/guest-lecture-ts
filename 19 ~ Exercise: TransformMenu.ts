@@ -12,8 +12,25 @@ type Menu = typeof menu
 
 type TransformMeal<Meal extends string> = any
 
+// type StructuredSteak = {
+//   main: "Steak";
+//   side: "lettuce";
+// }
 type StructuredSteak = TransformMeal<"Steak and lettuce">
 
-type TransformedMenu = {
-  [Day in keyof Menu]: TransformMeal<Menu[Day][number]>
-}
+// type TransformedMenu = {
+//     readonly Monday: {
+//         main: "Steak";
+//         side: "lettuce";
+//     } | {
+//         main: "Codd";
+//         side: "tomatoes";
+//     };
+//     readonly Tuesday: ...
+//     readonly Wednesday: ...
+//     readonly Thursday: ...
+//     readonly Friday: ...
+//     readonly Saturday: ...
+//     readonly Sunday: ...
+// }
+type TransformedMenu = any
