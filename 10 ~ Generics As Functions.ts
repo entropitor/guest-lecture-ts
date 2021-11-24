@@ -41,6 +41,7 @@ type ValueFor<T> = number
 type Keys = "a" | "b"
 
 // Mapped type is somewhat like calling a function in parallell for all possible keys and collecting the results
+// "for-loop"
 type MappedType = {
   [Key in Keys]: ValueFor<Key>
   //             ^^^^^^^^^^^^^ "Function" that we call for every Key
