@@ -72,7 +72,8 @@ type StringifiedCompany = {
  *
  *
  */
-// What if we "call" a generic (i.e. "function") with a union?
+// What if we "call" a generic/conditional with a union?
+// Make sure to also read the "Errata" file!
 type NumberOrString<T> = T extends "foo"
   ? number
   : T extends "bar"
@@ -104,3 +105,5 @@ type InPounds = NumberInUnit<"pound">
 type Weight = NumberInUnit<"kilogram" | "pound">
 type Weight2 = NumberInUnit<"kilogram"> | NumberInUnit<"pound">
 type Weight3 = InKiloGrams | InPounds
+
+// See also the Errata!
